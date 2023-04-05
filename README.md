@@ -1,4 +1,4 @@
-# onlineShoppingSystem
+# OnlineShoppingSystem
 
 * mysql 8.0
 * java 8
