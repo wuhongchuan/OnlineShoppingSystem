@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1fe8d1ff-ca5f-4f03-8193-6be4153b6a79" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database_project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/mysql-connector-java-8.0.16.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/AddCourseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/AddGradeInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/AddShopInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/AddStuInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/BeaBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/BeaInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/BeaModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/CourseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/CourseInfoSearchCnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/CourseSearchCname.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/CourseSearchCteacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/CrsBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/CrsModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/Database2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/Database3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/DelCourseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/DelStuInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/EditCourseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/EditGradeInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/EditStuInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/GradeInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/GradeModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/ResultCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/ResultGrade.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/ResultStudent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/SelectCourse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/ShopBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/ShopInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/ShopMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/ShopModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/ShoppingFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuFinal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuInfoSearchSnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuMain2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuMain3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuMain4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuMain5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuMain6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/StuModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/TeaBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/TeaModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/TeacherInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bean/csBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/course.dbf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sc.dbf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/student.dbf" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2NJWzRka9DKAdARNcNtmWbLpxqq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IdeaProject/database_project/database_project/src&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProject\database_project\database_project\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IdeaProject\database_project\database_project\lib" />
+      <recent name="D:\IdeaProject\database_project\database_project\src\bean" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bean" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ShopMain">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="database_project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bean.ShopMain" />
+      <module name="database_project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bean.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StuFinal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bean.StuFinal" />
+      <module name="database_project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bean.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ShopMain" />
+        <item itemvalue="Application.StuFinal" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1fe8d1ff-ca5f-4f03-8193-6be4153b6a79" name="Changes" comment="" />
+      <created>1679382928811</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1679382928811</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
