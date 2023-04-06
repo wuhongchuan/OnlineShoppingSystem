@@ -11,10 +11,10 @@ import java.net.URLClassLoader;
 
 
 /**
- * Shop Main Frame
- * All Shop
+ * Item Main Frame
+ * All Item
  */
-public class ShoppingFrame extends JFrame implements ActionListener{
+public class ItemFrame extends JFrame implements ActionListener{
 	//B orderLayout
 	private JPanel jpNorth,jpNorthTop,jpNorthBottom;
 
@@ -38,7 +38,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 
 
 	// Init
-	public ShoppingFrame(){
+	public ItemFrame(){
 		enableEvents(AWTEvent.WINDOW_EVENT_MASK);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +62,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		jlQuery = new JLabel("Input");
 		jtfQuery = new JTextField(10);
 		// search
-		String []ct = {"shopId","shopName","shopRating","shopLocation"};
+		String []ct = {"itemId","itemName","itemPrice","shopId"};
 		jcb1 = new JComboBox(ct);
 		jbQuery = new JButton("Search");
 		jbFlush = new JButton("Flush");
@@ -77,15 +77,14 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		this.getContentPane().add(jpNorth, BorderLayout.NORTH);
 	
 		// center
-		ShopModel model = new ShopModel();
-		String sql = "select *from shop where 1=?";
+		ItemModel model = new ItemModel();
+		String sql = "select *from item where 1=?";
 		String[] params = new String[]{"1"};
-		model.queryShop(sql,params);
+		model.queryItem(sql,params);
 		jtInfo = new JTable(model);
 		jtInfo.setRowHeight(25);
 		jsp = new JScrollPane(jtInfo);
 		this.getContentPane().add(jsp,BorderLayout.CENTER);
-		
 
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = toolkit.getScreenSize();
@@ -169,35 +168,35 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 			String jtfValue = jtfQuery.getText().trim();
 			//²éÑ¯µÄÊ±ºòÊäÈë¿Õ×Ö·û´®
 			if(jtfValue.equals("")){
-				String sql = "select * from shop where 1=?";
+				String sql = "select * from item where 1=?";
 				String[] params = new String[]{"1"};
-				ShopModel model = new ShopModel();
-				model.queryShop(sql, params);
+				ItemModel model = new ItemModel();
+				model.queryItem(sql, params);
 				jtInfo.setModel(model);
 			}else{
-				if((String)jcb1.getSelectedItem() == "shopId"){
-					String sql = "select * from shop where shopId=?";
+				if((String)jcb1.getSelectedItem() == "itemId"){
+					String sql = "select * from shop where itemId=?";
 					String[] params = new String[]{jtfValue};
-					ShopModel model = new ShopModel();
-					model.queryShop(sql, params);
+					ItemModel model = new ItemModel();
+					model.queryItem(sql, params);
 					jtInfo.setModel(model);
-				}else if((String)jcb1.getSelectedItem()=="shopName"){
-					String sql = "select * from shop where shopName=?";
+				}else if((String)jcb1.getSelectedItem()=="itemName"){
+					String sql = "select * from shop where itemName=?";
 					String[] params = new String[]{jtfValue};
-					ShopModel model = new ShopModel();
-					model.queryShop(sql, params);
+					ItemModel model = new ItemModel();
+					model.queryItem(sql, params);
 					jtInfo.setModel(model);
-				}else if((String)jcb1.getSelectedItem()=="shopRating"){
-					String sql = "select * from shop where shopRating=?";
+				}else if((String)jcb1.getSelectedItem()=="itemPrice"){
+					String sql = "select * from shop where itemPrice=?";
 					String[] params = new String[]{jtfValue};
-					ShopModel model = new ShopModel();
-					model.queryShop(sql, params);
+					ItemModel model = new ItemModel();
+					model.queryItem(sql, params);
 					jtInfo.setModel(model);
-				}else if((String)jcb1.getSelectedItem()=="shopLocation"){
-					String sql = "select * from shop where shopLocation=?";
+				}else if((String)jcb1.getSelectedItem()=="shopId"){
+					String sql = "select * from shop where itemShopId=?";
 					String[] params = new String[]{jtfValue};
-					ShopModel model = new ShopModel();
-					model.queryShop(sql, params);
+					ItemModel model = new ItemModel();
+					model.queryItem(sql, params);
 					jtInfo.setModel(model);
 				}
 			}
@@ -205,7 +204,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		else if(obj == jbFlush){
 			this.dispose();
 			boolean packFrame = false;
-			ShoppingFrame frame = new ShoppingFrame();
+			ItemFrame frame = new ItemFrame();
 			if(packFrame){
 				frame.pack();
 			}else{

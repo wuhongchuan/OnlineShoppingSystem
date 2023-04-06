@@ -5,25 +5,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-public class ShopModel extends AbstractTableModel{
+public class ItemModel extends AbstractTableModel{
 
 	private Database2 db;
 	private ResultSet rs = null;
 
 	private Vector rowDatas,columnNames;
-	public ShopModel(){}
+	public ItemModel(){}
 	
-	public boolean updateShop(String sql,String[] params){
+	public boolean updateItem(String sql,String[] params){
 		db = new Database2();
 		return db.isUpdate(sql,params);
 	}
 
-	public void queryShop(String sql,String[] params){
+	public void queryItem(String sql,String[] params){
 		columnNames = new Vector();
-		columnNames.add("Shop_Id");
-		columnNames.add("Shop_Name");
-		columnNames.add("Shop_Rating");
-		columnNames.add("Shop_Location");
+		columnNames.add("Item_Id");
+		columnNames.add("Item_Name");
+		columnNames.add("item_Price");
+		columnNames.add("item_Shop_Id");
 
 		rowDatas = new Vector();
 		try{

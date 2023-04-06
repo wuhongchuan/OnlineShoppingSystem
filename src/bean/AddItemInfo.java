@@ -6,16 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /*
- * add shop information
+ * add item information
  * */
 
-public class AddShopInfo extends JFrame implements ActionListener {
+public class AddItemInfo extends JFrame implements ActionListener {
 
 	Container contentPane;
-	JTextField shopId = new JTextField(15);
-	JTextField shopName = new JTextField(15);
-	JTextField shopRating = new JTextField(15);
-	JTextField shopLocation = new JTextField(15);
+	JTextField itemId = new JTextField(15);
+	JTextField itemName = new JTextField(15);
+	JTextField itemPrice = new JTextField(15);
+	JTextField itemShopId = new JTextField(15);
 
 	JPanel centerPanel = new JPanel();
 	JPanel downPanel = new JPanel();
@@ -38,7 +38,7 @@ public class AddShopInfo extends JFrame implements ActionListener {
 
 		centerPanel.setLayout(girdBag);
 
-		jLabel1.setText("ShopId£º");
+		jLabel1.setText("ItemId£º");
 		jLabel1.setFont(new Font("Dialog",0,12));
 		girdBagCon = new GridBagConstraints();
 		girdBagCon.gridx = 0;
@@ -50,10 +50,10 @@ public class AddShopInfo extends JFrame implements ActionListener {
 		girdBagCon.gridx = 1;
 		girdBagCon.gridy = 0;
 		girdBagCon.insets = new Insets(10,1,10,15);
-		girdBag.setConstraints(shopId, girdBagCon);
-		centerPanel.add(shopId);
+		girdBag.setConstraints(itemId, girdBagCon);
+		centerPanel.add(itemId);
 
-		jLabel2.setText("ShopName£º");
+		jLabel2.setText("ItemName£º");
 		jLabel2.setFont(new Font("Dialog",0,12));
 		girdBagCon = new GridBagConstraints();
 		girdBagCon.gridx = 2;
@@ -65,11 +65,11 @@ public class AddShopInfo extends JFrame implements ActionListener {
 		girdBagCon.gridx = 3;
 		girdBagCon.gridy = 0;
 		girdBagCon.insets = new Insets(10,1,10,10);
-		girdBag.setConstraints(shopName, girdBagCon);
-		centerPanel.add(shopName);
+		girdBag.setConstraints(itemName, girdBagCon);
+		centerPanel.add(itemName);
 
 
-		jLabel3.setText("ShopRating£º");
+		jLabel3.setText("ItemPrice£º");
 		jLabel3.setFont(new Font("Dialog",0,12));
 		girdBagCon = new GridBagConstraints();
 		girdBagCon.gridx = 0;
@@ -81,11 +81,11 @@ public class AddShopInfo extends JFrame implements ActionListener {
 		girdBagCon.gridx = 1;
 		girdBagCon.gridy = 1;
 		girdBagCon.insets = new Insets(10,1,10,15);
-		girdBag.setConstraints(shopRating, girdBagCon);
-		centerPanel.add(shopRating);
+		girdBag.setConstraints(itemPrice, girdBagCon);
+		centerPanel.add(itemPrice);
 
 
-		jLabel4.setText("ShopLocation£º");
+		jLabel4.setText("ItemShopId£º");
 		jLabel4.setFont(new Font("Dialog",0,12));
 		girdBagCon = new GridBagConstraints();
 		girdBagCon.gridx = 2;
@@ -97,8 +97,8 @@ public class AddShopInfo extends JFrame implements ActionListener {
 		girdBagCon.gridx = 3;
 		girdBagCon.gridy = 1;
 		girdBagCon.insets = new Insets(10,1,10,10);
-		girdBag.setConstraints(shopLocation,girdBagCon);
-		centerPanel.add(shopLocation);
+		girdBag.setConstraints(itemShopId,girdBagCon);
+		centerPanel.add(itemShopId);
 
 
 		contentPane.add(centerPanel,BorderLayout.CENTER);
@@ -106,20 +106,20 @@ public class AddShopInfo extends JFrame implements ActionListener {
 	}
 
 	void setNull(){
-		shopId.setText(null);
-		shopName.setText(null);
-		shopRating.setText(null);
-		shopLocation.setText(null);
+		itemId.setText(null);
+		itemName.setText(null);
+		itemPrice.setText(null);
+		itemShopId.setText(null);
 	}
 
-	public AddShopInfo(){
-		this.setTitle("Add Shop");
+	public AddItemInfo(){
+		this.setTitle("Add Item");
 		this.setResizable(false);
 
-		shopId.setEditable(true);
-		shopName.setEditable(true);
-		shopRating.setEditable(true);
-		shopLocation.setEditable(true);
+		itemId.setEditable(true);
+		itemName.setEditable(true);
+		itemPrice.setEditable(true);
+		itemShopId.setEditable(true);
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation((screenSize.width - 400) / 2, (screenSize.height - 300) / 2 + 45);
@@ -167,22 +167,22 @@ public class AddShopInfo extends JFrame implements ActionListener {
 			this.dispose();
 		}
 		else if(obj == addInfo){   // Add
-			shopId.setEnabled(false);
-			shopName.setEnabled(false);
-			shopRating.setEnabled(false);
-			shopLocation.setEnabled(false);
+			itemId.setEnabled(false);
+			itemName.setEnabled(false);
+			itemPrice.setEnabled(false);
+			itemShopId.setEnabled(false);
 
 			addInfo.setEnabled(false);
 			clearInfo.setEnabled(false);
 			exitInfo.setEnabled(false);
 
-			ShopBean addShop = new ShopBean();
-			addShop.shopAdd(shopId.getText(), shopName.getText(), shopRating.getText(),
-					shopLocation.getText());
+			ItemBean addItem = new ItemBean();
+			addItem.itemAdd(itemId.getText(), itemName.getText(), itemPrice.getText(),
+					itemShopId.getText());
 			
 			this.dispose();
 			
-			AddShopInfo asi = new AddShopInfo();
+			AddItemInfo asi = new AddItemInfo();
 			asi.downInit();
 			asi.pack();
 			asi.setVisible(true);
