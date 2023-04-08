@@ -1,8 +1,8 @@
 # OnlineShoppingSystem
 
 * mysql 8.0
-* java 8
-* navicat
+* java 8 (jdk 1.8.0_241)
+* navicat (optional)
 * IDEA community
 
 
