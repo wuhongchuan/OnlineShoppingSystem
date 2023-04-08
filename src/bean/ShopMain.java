@@ -8,9 +8,9 @@ import java.awt.*;
 
 public class ShopMain {
 	boolean packFrame = false;
-	static String ccid = "";
+	static Integer ccid = 0;
 
-	public ShopMain(String cid){
+	public ShopMain(Integer cid){
 		this.ccid = cid;
 		ShoppingFrame frame = new ShoppingFrame(cid);
 

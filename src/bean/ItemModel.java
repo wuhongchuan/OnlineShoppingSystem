@@ -13,11 +13,6 @@ public class ItemModel extends AbstractTableModel{
 
 	private Vector rowDatas,columnNames;
 	public ItemModel(){}
-	
-	public boolean updateItem(String sql,String[] params){
-		db = new Database2();
-		return db.isUpdate(sql,params);
-	}
 
 	public void queryItem(String sql,String[] params){
 		columnNames = new Vector();
@@ -47,13 +42,13 @@ public class ItemModel extends AbstractTableModel{
 
 	public ArrayList getItemShopId(String sql, String[] params){
 
-		ArrayList<String> idList = new ArrayList<String>();
+		ArrayList<Integer> idList = new ArrayList<Integer>();
 		try{
 			db = new Database2();
 			rs = db.queryResult(sql,params);
 
 			while (rs.next()) {
-				idList.add(rs.getString(1));
+				idList.add(rs.getInt(1));
 			}
 
 

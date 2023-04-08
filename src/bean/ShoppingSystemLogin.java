@@ -1,7 +1,6 @@
 package bean;
 
 import javax.swing.*;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,7 +51,7 @@ public class ShoppingSystemLogin {
                 String password = new String(loginPasswordField.getPassword());
                 if (login(username, password)) {
                     JOptionPane.showMessageDialog(loginFrame, "Login successful.");
-                    String cid = shopItemShow(username);
+                    Integer cid = shopItemShow(username);
 
                     try {
                         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -124,10 +123,10 @@ public class ShoppingSystemLogin {
         login();
     }
 
-    public static String shopItemShow(String username) {
+    public static Integer shopItemShow(String username) {
         Connection conn = null;
         Statement stmt = null;
-        String customerId = null;
+        Integer customerId = null;
 
         try {
             Class.forName(JDBC_DRIVER);
@@ -139,7 +138,7 @@ public class ShoppingSystemLogin {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                customerId = rs.getString(1);
+                customerId = rs.getInt(1);
             }
 
 

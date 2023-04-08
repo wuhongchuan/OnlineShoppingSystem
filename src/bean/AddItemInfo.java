@@ -204,8 +204,8 @@ public class AddItemInfo extends JFrame implements ActionListener {
 			exitInfo.setEnabled(false);
 
 			ItemBean addItem = new ItemBean();
-			addItem.itemAdd(itemId.getText(), itemName.getText(), itemPrice.getText(),
-					itemShopId.getSelectedItem().toString());
+			addItem.itemAdd(Integer.parseInt(itemId.getText()), itemName.getText(), itemPrice.getText(),
+					Integer.parseInt(itemShopId.getSelectedItem().toString()));
 
 			this.dispose();
 

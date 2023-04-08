@@ -177,7 +177,7 @@ public class AddShopInfo extends JFrame implements ActionListener {
 			exitInfo.setEnabled(false);
 
 			ShopBean addShop = new ShopBean();
-			addShop.shopAdd(shopId.getText(), shopName.getText(), shopRating.getText(),
+			addShop.shopAdd(Integer.parseInt(shopId.getText()), shopName.getText(), Float.parseFloat(shopRating.getText()),
 					shopLocation.getText());
 			
 			this.dispose();

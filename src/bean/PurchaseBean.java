@@ -9,20 +9,20 @@ public class PurchaseBean {
 	String sql;
 	ResultSet rs = null;
 
-	String customerId;
-	String shopId;
-	String itemId;
+	Integer customerId;
+	Integer shopId;
+	Integer itemId;
 
 
 	// Purchase Item
-	public void purchaseItem(String cid, String sid, String iid) {
+	public void purchaseItem(Integer cid, Integer sid, Integer iid) {
 		Database DB = new Database();
 
 		this.customerId = cid;
 		this.shopId = sid;
 		this.itemId = iid;
 
-		sql = "insert into purchase(customerId, shopId, itemId) values ('" + customerId + "','" + shopId + "','" + itemId + "')";
+		sql = "insert into purchase(customerId, shopId, itemId) values ('" + customerId.toString() + "','" + shopId.toString() + "','" + itemId.toString() + "')";
 		try {
 			DB.OpenConn();
 			DB.executeUpdate(sql);
@@ -41,14 +41,14 @@ public class PurchaseBean {
 	/**
 	 * Delete Item
 	 */
-	public void DeleteOrderItem(String cid, String sid, String iid) {
+	public void DeleteOrderItem(Integer cid, Integer sid, Integer iid) {
 		Database DB = new Database();
 
 		this.customerId = cid;
 		this.shopId = sid;
 		this.itemId = iid;
 
-		sql = "delete from purchase WHERE customerId='" + customerId + "' AND shopId='" + shopId + "'AND itemId='" + itemId +"'";
+		sql = "delete from purchase WHERE customerId='" + customerId.toString() + "' AND shopId='" + shopId.toString() + "'AND itemId='" + itemId.toString() +"'";
 		try {
 			DB.OpenConn();
 			DB.executeUpdate(sql);
@@ -65,7 +65,7 @@ public class PurchaseBean {
 	/**
 	 * Delete All Items
 	 */
-	public void DeleteAllItem(String cid) {
+	public void DeleteAllItem(Integer cid) {
 		Database DB = new Database();
 		this.customerId = cid;
 

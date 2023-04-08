@@ -18,7 +18,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 	//B orderLayout
 	private JPanel jpNorth,jpNorthTop,jpNorthBottom;
 
-	String ccid = "";
+	Integer ccid = 0;
 	Dimension faceSize = new Dimension(400,300);
 	Image icon;
 	// menu
@@ -39,7 +39,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 
 
 	// Init
-	public ShoppingFrame(String cid){
+	public ShoppingFrame(Integer cid){
 		this.ccid = cid;
 		enableEvents(AWTEvent.WINDOW_EVENT_MASK);
 
@@ -80,9 +80,10 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 	
 		// center
 		ShopModel model = new ShopModel();
-		String sql = "select *from shop where 1=?";
+		String sql = "select * from shop where 1=?";
 		String[] params = new String[]{"1"};
-		model.queryShop(sql,params);
+		model.queryShop(sql, params);
+
 		jtInfo = new JTable(model);
 		jtInfo.setRowHeight(25);
 		jsp = new JScrollPane(jtInfo);
@@ -92,8 +93,6 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = toolkit.getScreenSize();
 		this.setSize(screenSize.width, screenSize.height);
-//		this.setLocationRelativeTo(null);
-//		this.setSize(2000, 2000);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		
@@ -118,7 +117,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 
 		jb1 = new JButton("Show all Shops",new ImageIcon("src/pic/1.png"));
 		jb2 = new JButton("Add Shop",new ImageIcon("src/pic/2.png"));
-		jb3 = new JButton("Show all Items \nof a shop",new ImageIcon("src/pic/3.png"));
+//		jb3 = new JButton("Show all Items \nof a shop",new ImageIcon("src/pic/3.png"));
 		jb4 = new JButton("Add Item",new ImageIcon("src/pic/4.png"));
 		jb5 = new JButton("Item Purchase",new ImageIcon("src/pic/5.png"));
 		jb6 = new JButton("Show Orders",new ImageIcon("src/pic/6.png"));
@@ -129,7 +128,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 	
 		jb1.addActionListener(this);
 		jb2.addActionListener(this);
-		jb3.addActionListener(this);
+//		jb3.addActionListener(this);
 		jb4.addActionListener(this);
 		jb5.addActionListener(this);
 		jb6.addActionListener(this);
@@ -140,7 +139,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		
 		jtb.add(jb1);
 		jtb.add(jb2);
-		jtb.add(jb3);
+//		jtb.add(jb3);
 		jtb.add(jb4);
 		jtb.add(jb5);
 		jtb.add(jb6);
@@ -162,9 +161,9 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		);	
 	}
 
-	public JTable getTable() {
-		return jtInfo;
-	}
+//	public JTable getTable() {
+//		return jtInfo;
+//	}
 
 	
 	//事件处理
@@ -177,13 +176,12 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		if (obj == jbQuery) {    // search
 			String jtfValue = jtfQuery.getText().trim();
 			if(jtfValue.equals("")){
-				String sql = "select * from shop where 1=?";
+				String sql = "select * from Item where 1=?";
 				String[] params = new String[]{"1"};
 				ItemModel model = new ItemModel();
 				model.queryItem(sql, params);
 				jtInfo.setModel(model);
 			}else{
-//				String []ct = {"ItemId","ItemName","ItemPrice","ItemShopId"};
 				if((String)jcb1.getSelectedItem() == "ItemId"){
 					String sql = "select * from Item where itemId=?";
 					String[] params = new String[]{jtfValue};
@@ -211,29 +209,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 				}
 			}
 		}
-		else if(obj == jbFlush){
-			this.dispose();
-			boolean packFrame = false;
-			ShoppingFrame frame = new ShoppingFrame(ccid);
-			if(packFrame){
-				frame.pack();
-			}else{
-				frame.validate();
-			}
-
-			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			Dimension frameSize = frame.getSize();
-			if(frameSize.height > screenSize.height){
-				frameSize.height = screenSize.height;
-			}
-			if(frameSize.width > screenSize.width){
-				frameSize.width = screenSize.width;
-			}
-			frame.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
-			frame.setVisible(true);
-		}
-
-		else if (obj == jb1) { // show all shops
+		else if (obj == jb1 || obj == jbFlush) { // show all shops
 			String sql = "select * from shop where 1=?";
 			String[] params = new String[]{"1"};
 			ShopModel model = new ShopModel();
@@ -246,14 +222,15 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 			asi.pack();
 			asi.setVisible(true);
 		}
-		else if (obj == jb3) { // show Item in a shop
-			ShowShopItem ssi = new ShowShopItem();
-			ssi.downInit();
-			ssi.pack();
-			ssi.setVisible(true);
-			this.dispose();
+//		else if (obj == jb3) { // show Item in a shop
+////			ItemModel
+//			ShowShopItem ssi = new ShowShopItem();
+//			ssi.downInit();
+//			ssi.pack();
+//			ssi.setVisible(true);
+//			this.dispose();
 
-		}
+//		}
 		else if (obj == jb4) { // Add Item
 			AddItemInfo asi = new AddItemInfo();
 			asi.downInit();

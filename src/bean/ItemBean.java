@@ -3,20 +3,20 @@ package bean;
 import javax.swing.*;
 import java.sql.ResultSet;
 
-//有关商品信息数据库操作的类
+// item database
 
 public class ItemBean {
 	String sql;
 	ResultSet rs = null;
 
-	String itemId;
+	Integer itemId;
 	String itemName;
 	String itemPrice;
-	String itemShopId;
+	Integer itemShopId;
 
 
 	// Add Item
-	public void itemAdd(String iid, String name, String price, String isid) {
+	public void itemAdd(Integer iid, String name, String price, Integer isid) {
 		Database DB = new Database();
 
 		this.itemId = iid;
@@ -24,7 +24,7 @@ public class ItemBean {
 		this.itemPrice = price;
 		this.itemShopId = isid;
 
-		sql = "insert into item(itemId, itemName, itemPrice, itemShopId) values ('" + itemId + "','" + itemName + "','" + itemPrice + "','" + itemShopId + "')";
+		sql = "insert into item(itemId, itemName, itemPrice, itemShopId) values ('" + itemId.toString() + "','" + itemName + "','" + itemPrice + "','" + itemShopId.toString() + "')";
 		try {
 			DB.OpenConn();
 			DB.executeUpdate(sql);
@@ -39,26 +39,25 @@ public class ItemBean {
 		}
 	}
 
-
-	/**
-	 * Delete Item
-	 */
-	public void itemDel(String sid) {
-		Database DB = new Database();
-
-		this.itemId = sid;
-
-		sql = "delete from item where itemid = " + itemId + "";
-		try {
-			DB.OpenConn();
-			DB.executeUpdate(sql);
-			JOptionPane.showMessageDialog(null, "A new record is successfully deleted！");
-		} catch (Exception e) {
-			System.out.println(e);
-			JOptionPane.showMessageDialog(null, "delete fail", "error", JOptionPane.ERROR_MESSAGE);
-		} finally {
-			DB.closeStmt();
-			DB.closeConn();
-		}
-	}
+//	/**
+//	 * Delete Item
+//	 */
+//	public void itemDel(Integer sid) {
+//		Database DB = new Database();
+//
+//		this.itemId = sid;
+//
+//		sql = "delete from item where itemid = " + itemId.toString() + "";
+//		try {
+//			DB.OpenConn();
+//			DB.executeUpdate(sql);
+//			JOptionPane.showMessageDialog(null, "A new record is successfully deleted！");
+//		} catch (Exception e) {
+//			System.out.println(e);
+//			JOptionPane.showMessageDialog(null, "delete fail", "error", JOptionPane.ERROR_MESSAGE);
+//		} finally {
+//			DB.closeStmt();
+//			DB.closeConn();
+//		}
+//	}
 }

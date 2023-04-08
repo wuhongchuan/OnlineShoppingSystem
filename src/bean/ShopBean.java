@@ -9,21 +9,16 @@ public class ShopBean {
 	String sql;
 	ResultSet rs = null;
 
-	String shopId;
+	Integer shopId;
 	String shopName;
-	String shopRating;
+	Float shopRating;
 	String shopLocation;
-//	private ShoppingFrame sf;
+
 	public ShopBean(){
 	}
 
-//	public ShopBean(ShoppingFrame sf){
-//		jtable = ShoppingFrame.getInstance()
-//	}
-
-
 	// add shop information
-	public void shopAdd(String sid, String name, String rating, String location) {
+	public void shopAdd(Integer sid, String name, Float rating, String location) {
 		Database DB = new Database();
 
 		this.shopId = sid;
@@ -31,7 +26,7 @@ public class ShopBean {
 		this.shopRating = rating;
 		this.shopLocation = location;
 
-		sql = "insert into shop(shopId, shopName, shopRating, shopLocation) values ('" + shopId + "','" + shopName + "','" + shopRating + "','" + shopLocation + "')";
+		sql = "insert into shop(shopId, shopName, shopRating, shopLocation) values ('" + shopId.toString() + "','" + shopName + "','" + shopRating.toString() + "','" + shopLocation + "')";
 		try {
 			DB.OpenConn();
 			DB.executeUpdate(sql);
@@ -47,15 +42,13 @@ public class ShopBean {
 	}
 
 //	show shop item
-	public ShopModel shopItemShow(String sid){
+	public ShopModel shopItemShow(Integer sid){
 		sql = "select * from shop where shopId=?";
-		String[] params = new String[]{sid};
+		String[] params = new String[]{sid.toString()};
 		ShopModel model = new ShopModel();
 		model.queryShop(sql, params);
 		return model;
 
-//		JTable jtTableInfo = sf.getTable();
-//		jtTableInfo.setModel(model);
 	}
 }
 

@@ -13,11 +13,11 @@ import java.util.List;
 
 public class PurchaseItem extends JFrame implements ActionListener {
 
-	static String cid = "";
+	static Integer cid = 0;
 	JTextField customerId = new JTextField(5);
 
-	JComboBox<String> shopId = new JComboBox<>();
-	JComboBox<String> itemId = new JComboBox<>();
+	JComboBox<Integer> shopId = new JComboBox<>();
+	JComboBox<Integer> itemId = new JComboBox<>();
 
 	JPanel centerPanel = new JPanel(new GridBagLayout());
 
@@ -45,12 +45,12 @@ public class PurchaseItem extends JFrame implements ActionListener {
 		girdBagCon.gridx = 1;
 		girdBagCon.gridy = 0;
 		girdBagCon.insets = new Insets(10,1,10,15);
-		customerId.setText(cid);
+		customerId.setText(cid.toString());
 		customerId.setEnabled(false);
 		centerPanel.add(customerId);
 
-		List<String> ct = getShopId();
-		for (String item : ct) {
+		List<Integer> ct = getShopId();
+		for (Integer item : ct) {
 			shopId.addItem(item);
 		}
 
@@ -104,20 +104,19 @@ public class PurchaseItem extends JFrame implements ActionListener {
 	}
 
 	public void InitShopId() {
-		List<String> ct = getShopId();
+		List<Integer> ct = getShopId();
 		shopId.removeAllItems();
-		for (String item : ct) {
+		for (Integer item : ct) {
 			shopId.addItem(item);
 		}
 	}
 
 	private void UpdateItemId() {
-		List<String> ct = getItemId();
+		List<Integer> ct = getItemId();
 		itemId.removeAllItems();
-		for (String item : ct) {
+		for (Integer item : ct) {
 			itemId.addItem(item);
 		}
-
 	}
 
 	public List getShopId(){
@@ -133,15 +132,15 @@ public class PurchaseItem extends JFrame implements ActionListener {
 
 		ItemModel model = new ItemModel();
 		String sql = "select itemId from Item where itemShopId=?";
-		String item_shop_id = shopId.getSelectedItem().toString();
+		Integer item_shop_id = Integer.parseInt(shopId.getSelectedItem().toString());
 
-		String[] params = new String[]{item_shop_id};
+		String[] params = new String[]{item_shop_id.toString()};
 		ArrayList idList = model.getItemShopId(sql, params);
 
 		return idList;
 	}
 
-	public PurchaseItem(String ccid){
+	public PurchaseItem(Integer ccid){
 		this.cid = ccid;
 		this.setTitle("Purchase Item");
 		this.setResizable(false);
@@ -180,8 +179,8 @@ public class PurchaseItem extends JFrame implements ActionListener {
 			exitInfo.setEnabled(false);
 
 			PurchaseBean pItem = new PurchaseBean();
-			pItem.purchaseItem(customerId.getText(), shopId.getSelectedItem().toString(),
-					itemId.getSelectedItem().toString());
+			pItem.purchaseItem(Integer.parseInt(customerId.getText()), Integer.parseInt(shopId.getSelectedItem().toString()),
+					Integer.parseInt(itemId.getSelectedItem().toString()));
 
 			this.dispose();
 		}

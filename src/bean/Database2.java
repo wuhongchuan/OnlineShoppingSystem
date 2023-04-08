@@ -2,31 +2,24 @@ package bean;
 
 import java.sql.*;
 
-/**
- * 连接数据库的类
- */
+
 public class Database2 {
-	//驱动程序名
 	private String driver = "com.mysql.cj.jdbc.Driver";
-	String sql;
-	//URL指要访问的数据库名system
-//	String url="jdbc:mysql://localhost:3306/database?serverTimezone = GMT";
-	//	操作数据库的类
+	private String url = "jdbc:mysql://localhost:3306/database?serverTimezone = GMT";
+	private String user = "root";
+	private String password = "crocodile";
+
 	private PreparedStatement ps=null;
 	private ResultSet rs=null;
 	private Connection conn=null;
-	
+
 	/**
-	 * 执行sql语句，用来存放获取的结果集rs  无参
+	 * no param
 	 */
 	public ResultSet queryResult(String sql){
 		try{
-			//加载驱动程序
 			Class.forName(driver);
-			//连接Mysql数据库
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/database?serverTimezone = GMT",
-												"root",
-												"crocodile");
+			conn=DriverManager.getConnection(url, user, password);
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 		}catch(SQLException e){
@@ -34,20 +27,16 @@ public class Database2 {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}finally{
-			
+
 		}
 		return rs;
 	}
 
-	/*
-	 * 与参数集合获取结果集
-	 * */
+
 	public ResultSet queryResult(String sql,String[] params){
 		try {
 			Class.forName(driver);
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/database?serverTimezone = GMT",
-												"root",
-												"crocodile");
+			conn=DriverManager.getConnection(url, user, password);
 			ps = conn.prepareStatement(sql);
 
 
@@ -60,14 +49,12 @@ public class Database2 {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}finally{
-			
+
 		}
 		return rs;
 	}
-	
-	/**
-	 * 执行sql语句
-	 */
+
+
 	public boolean isUpdate(String sql,String[] params){
 		boolean b = true;
 		try{
@@ -94,10 +81,10 @@ public class Database2 {
 		}
 		return b;
 	}
-	
+
 
 	/**
-	 * 关闭数据库连接
+	 * close connection
 	 */
 	public void close(){
 		try{
@@ -120,19 +107,5 @@ public class Database2 {
 			e.printStackTrace();
 		}
 	}
-	
-	/*
-	 *转换编码
-	 */
-	public static String toGBK(String str){
-		try {
-			if(str==null)
-				str = "";
-			else
-				str=new String(str.getBytes("ISO-8859-1"),"GBK"); 
-		}
-		catch (Exception e) {System.out.println(e);}
-		
-		return str;
-	}
+
 }

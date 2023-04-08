@@ -47,13 +47,13 @@ public class ShopModel extends AbstractTableModel{
 
 	public ArrayList getShopId(String sql, String[] params){
 
-		ArrayList<String> idList = new ArrayList<String>();
+		ArrayList<Integer> idList = new ArrayList<Integer>();
 		try{
 			db = new Database2();
 			rs = db.queryResult(sql,params);
 
 			while (rs.next()) {
-				idList.add(rs.getString(1));
+				idList.add(rs.getInt(1));
 			}
 
 		}catch(SQLException e){
