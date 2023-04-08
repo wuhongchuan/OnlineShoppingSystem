@@ -18,6 +18,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 	//B orderLayout
 	private JPanel jpNorth,jpNorthTop,jpNorthBottom;
 
+	String ccid = "";
 	Dimension faceSize = new Dimension(400,300);
 	Image icon;
 	// menu
@@ -34,11 +35,12 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 	// center
 	private JScrollPane jsp;
 
-	private JTable jtInfo;
+	JTable jtInfo;
 
 
 	// Init
-	public ShoppingFrame(){
+	public ShoppingFrame(String cid){
+		this.ccid = cid;
 		enableEvents(AWTEvent.WINDOW_EVENT_MASK);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +48,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 
 		this.setSize(faceSize);
 
-		this.setTitle("商店主界面");
+		this.setTitle("Shopping");
 		icon = getImage("pic/1.jpg");
 		this.setIconImage(icon);
 		
@@ -62,7 +64,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		jlQuery = new JLabel("Input");
 		jtfQuery = new JTextField(10);
 		// search
-		String []ct = {"shopId","shopName","shopRating","shopLocation"};
+		String []ct = {"ItemId","ItemName","ItemPrice","ItemShopId"};
 		jcb1 = new JComboBox(ct);
 		jbQuery = new JButton("Search");
 		jbFlush = new JButton("Flush");
@@ -90,6 +92,8 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = toolkit.getScreenSize();
 		this.setSize(screenSize.width, screenSize.height);
+//		this.setLocationRelativeTo(null);
+//		this.setSize(2000, 2000);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		
@@ -117,9 +121,9 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		jb3 = new JButton("Show all Items \nof a shop",new ImageIcon("src/pic/3.png"));
 		jb4 = new JButton("Add Item",new ImageIcon("src/pic/4.png"));
 		jb5 = new JButton("Item Purchase",new ImageIcon("src/pic/5.png"));
-		jb6 = new JButton("Order Canceling",new ImageIcon("src/pic/6.png"));
-//		jb7 = new JButton("课程删除",new ImageIcon("src/pic/7.png"));
-//		jb8 = new JButton("成绩增加",new ImageIcon("src/pic/8.png"));
+		jb6 = new JButton("Show Orders",new ImageIcon("src/pic/6.png"));
+		jb7 = new JButton("Order Canceling",new ImageIcon("src/pic/7.png"));
+		jb8 = new JButton("Delete Order",new ImageIcon("src/pic/8.png"));
 //		jb9 = new JButton("成绩修改",new ImageIcon("src/pic/9.png"));
 		jb10 = new JButton("Exit",new ImageIcon("src/pic/10.png"));
 	
@@ -129,8 +133,8 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		jb4.addActionListener(this);
 		jb5.addActionListener(this);
 		jb6.addActionListener(this);
-//		jb7.addActionListener(this);
-//		jb8.addActionListener(this);
+		jb7.addActionListener(this);
+		jb8.addActionListener(this);
 //		jb9.addActionListener(this);
 		jb10.addActionListener(this);
 		
@@ -140,8 +144,8 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		jtb.add(jb4);
 		jtb.add(jb5);
 		jtb.add(jb6);
-//		jtb.add(jb7);
-//		jtb.add(jb8);
+		jtb.add(jb7);
+		jtb.add(jb8);
 //		jtb.add(jb9);
 		jtb.add(jb10);
 		jpNorthTop.add(jtb);
@@ -157,6 +161,11 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 			}
 		);	
 	}
+
+	public JTable getTable() {
+		return jtInfo;
+	}
+
 	
 	//事件处理
 	@Override
@@ -167,37 +176,37 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		}
 		if (obj == jbQuery) {    // search
 			String jtfValue = jtfQuery.getText().trim();
-			//查询的时候输入空字符串
 			if(jtfValue.equals("")){
 				String sql = "select * from shop where 1=?";
 				String[] params = new String[]{"1"};
-				ShopModel model = new ShopModel();
-				model.queryShop(sql, params);
+				ItemModel model = new ItemModel();
+				model.queryItem(sql, params);
 				jtInfo.setModel(model);
 			}else{
-				if((String)jcb1.getSelectedItem() == "shopId"){
-					String sql = "select * from shop where shopId=?";
+//				String []ct = {"ItemId","ItemName","ItemPrice","ItemShopId"};
+				if((String)jcb1.getSelectedItem() == "ItemId"){
+					String sql = "select * from Item where itemId=?";
 					String[] params = new String[]{jtfValue};
-					ShopModel model = new ShopModel();
-					model.queryShop(sql, params);
+					ItemModel model = new ItemModel();
+					model.queryItem(sql, params);
 					jtInfo.setModel(model);
-				}else if((String)jcb1.getSelectedItem()=="shopName"){
-					String sql = "select * from shop where shopName=?";
+				}else if((String)jcb1.getSelectedItem()=="ItemName"){
+					String sql = "select * from Item where itemName=?";
 					String[] params = new String[]{jtfValue};
-					ShopModel model = new ShopModel();
-					model.queryShop(sql, params);
+					ItemModel model = new ItemModel();
+					model.queryItem(sql, params);
 					jtInfo.setModel(model);
-				}else if((String)jcb1.getSelectedItem()=="shopRating"){
-					String sql = "select * from shop where shopRating=?";
+				}else if((String)jcb1.getSelectedItem()=="ItemPrice"){
+					String sql = "select * from Item where itemPrice=?";
 					String[] params = new String[]{jtfValue};
-					ShopModel model = new ShopModel();
-					model.queryShop(sql, params);
+					ItemModel model = new ItemModel();
+					model.queryItem(sql, params);
 					jtInfo.setModel(model);
-				}else if((String)jcb1.getSelectedItem()=="shopLocation"){
-					String sql = "select * from shop where shopLocation=?";
+				}else if((String)jcb1.getSelectedItem()=="ItemShopId"){
+					String sql = "select * from Item where itemShopId=?";
 					String[] params = new String[]{jtfValue};
-					ShopModel model = new ShopModel();
-					model.queryShop(sql, params);
+					ItemModel model = new ItemModel();
+					model.queryItem(sql, params);
 					jtInfo.setModel(model);
 				}
 			}
@@ -205,13 +214,13 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		else if(obj == jbFlush){
 			this.dispose();
 			boolean packFrame = false;
-			ShoppingFrame frame = new ShoppingFrame();
+			ShoppingFrame frame = new ShoppingFrame(ccid);
 			if(packFrame){
 				frame.pack();
 			}else{
 				frame.validate();
 			}
-			//设置运行时窗口的位置
+
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			Dimension frameSize = frame.getSize();
 			if(frameSize.height > screenSize.height){
@@ -237,12 +246,13 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 			asi.pack();
 			asi.setVisible(true);
 		}
-		else if (obj == jb3) { // show all items
-			String sql = "select * from item where 1=?";
-			String[] params = new String[]{"1"};
-			ItemModel model = new ItemModel();
-			model.queryItem(sql, params);
-			jtInfo.setModel(model);
+		else if (obj == jb3) { // show Item in a shop
+			ShowShopItem ssi = new ShowShopItem();
+			ssi.downInit();
+			ssi.pack();
+			ssi.setVisible(true);
+			this.dispose();
+
 		}
 		else if (obj == jb4) { // Add Item
 			AddItemInfo asi = new AddItemInfo();
@@ -250,30 +260,28 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 			asi.pack();
 			asi.setVisible(true);
 		}
-//		else if (obj == jb5) { //课程增加
-//			AddCourseInfo aci = new AddCourseInfo();
-//			aci.downInit();
-//			aci.pack();
-//			aci.setVisible(true);
-//		}
-//		else if (obj == jb6) { //课程修改
-//			EditCourseInfo eci = new EditCourseInfo();
-//			eci.downInit();
-//			eci.pack();
-//			eci.setVisible(true);
-//		}
-//		else if (obj == jb7) { //课程删除
-//			DelCourseInfo dci = new DelCourseInfo();
-//			dci.downInit();
-//			dci.pack();
-//			dci.setVisible(true);
-//		}
-//		else if (obj == jb8) { //成绩增加
-//			AddGradeInfo agi = new AddGradeInfo();
-//			agi.downInit();
-//			agi.pack();
-//			agi.setVisible(true);
-//		}
+		else if (obj == jb5) { // purchase Item
+
+			PurchaseItem pi = new PurchaseItem(ccid);
+			pi.pack();
+			pi.setVisible(true);
+		}
+		else if (obj == jb6) { // show orders
+			String sql = "select * from purchase where 1=?";
+			String[] params = new String[]{"1"};
+			PurchaseModel model = new PurchaseModel();
+			model.queryPurchase(sql, params);
+			jtInfo.setModel(model);
+		}
+		else if (obj == jb7) { // order cancel
+			DelOrderInfo doi = new DelOrderInfo(ccid);
+			doi.pack();
+			doi.setVisible(true);
+		}
+		else if (obj == jb8) { // order delete
+			PurchaseBean pItem = new PurchaseBean();
+			pItem.DeleteAllItem(ccid);
+		}
 //		else if (obj == jb9) { //成绩修改
 //			EditGradeInfo egi = new EditGradeInfo();
 //			egi.downInit();

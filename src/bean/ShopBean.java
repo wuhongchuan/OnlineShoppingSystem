@@ -13,6 +13,13 @@ public class ShopBean {
 	String shopName;
 	String shopRating;
 	String shopLocation;
+//	private ShoppingFrame sf;
+	public ShopBean(){
+	}
+
+//	public ShopBean(ShoppingFrame sf){
+//		jtable = ShoppingFrame.getInstance()
+//	}
 
 
 	// add shop information
@@ -37,6 +44,18 @@ public class ShopBean {
 			DB.closeStmt();
 			DB.closeConn();
 		}
+	}
+
+//	show shop item
+	public ShopModel shopItemShow(String sid){
+		sql = "select * from shop where shopId=?";
+		String[] params = new String[]{sid};
+		ShopModel model = new ShopModel();
+		model.queryShop(sql, params);
+		return model;
+
+//		JTable jtTableInfo = sf.getTable();
+//		jtTableInfo.setModel(model);
 	}
 }
 
@@ -63,3 +82,4 @@ public class ShopBean {
 //			DB.closeConn();
 //		}
 //	}
+

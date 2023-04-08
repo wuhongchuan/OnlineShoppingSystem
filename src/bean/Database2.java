@@ -49,6 +49,8 @@ public class Database2 {
 												"root",
 												"crocodile");
 			ps = conn.prepareStatement(sql);
+
+
 			for(int i=0;i<params.length;i++){
 				ps.setString(i+1, params[i]);
 			}

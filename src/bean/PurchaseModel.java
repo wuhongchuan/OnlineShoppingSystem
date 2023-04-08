@@ -6,25 +6,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class ShopModel extends AbstractTableModel{
+public class PurchaseModel extends AbstractTableModel{
 
 	private Database2 db;
 	private ResultSet rs = null;
 
 	private Vector rowDatas,columnNames;
-	public ShopModel(){}
+	public PurchaseModel(){}
 	
-	public boolean updateShop(String sql,String[] params){
-		db = new Database2();
-		return db.isUpdate(sql,params);
-	}
+//	public boolean updateShop(String sql,String[] params){
+//		db = new Database2();
+//		return db.isUpdate(sql,params);
+//	}
 
-	public void queryShop(String sql,String[] params){
+	public void queryPurchase(String sql,String[] params){
 		columnNames = new Vector();
+		columnNames.add("Customer_Id");
 		columnNames.add("Shop_Id");
-		columnNames.add("Shop_Name");
-		columnNames.add("Shop_Rating");
-		columnNames.add("Shop_Location");
+		columnNames.add("Item_Id");
 
 		rowDatas = new Vector();
 		try{
@@ -35,7 +34,6 @@ public class ShopModel extends AbstractTableModel{
 				row.add(rs.getString(1));
 				row.add(rs.getString(2));
 				row.add(rs.getString(3));
-				row.add(rs.getString(4));
 				rowDatas.add(row);
 			}
 		}catch(SQLException e){
@@ -45,24 +43,6 @@ public class ShopModel extends AbstractTableModel{
 		}
 	}
 
-	public ArrayList getShopId(String sql, String[] params){
-
-		ArrayList<String> idList = new ArrayList<String>();
-		try{
-			db = new Database2();
-			rs = db.queryResult(sql,params);
-
-			while (rs.next()) {
-				idList.add(rs.getString(1));
-			}
-
-		}catch(SQLException e){
-			e.printStackTrace();
-		}finally{
-			db.close();
-		}
-		return idList;
-	}
 
 	public int getRowCount() {
 		return this.rowDatas.size();

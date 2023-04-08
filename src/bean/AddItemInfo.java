@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import java.util.List;
 
 /*
  * add item information
@@ -15,7 +18,8 @@ public class AddItemInfo extends JFrame implements ActionListener {
 	JTextField itemId = new JTextField(15);
 	JTextField itemName = new JTextField(15);
 	JTextField itemPrice = new JTextField(15);
-	JTextField itemShopId = new JTextField(15);
+//	JTextField itemShopId = new JTextField(15);
+
 
 	JPanel centerPanel = new JPanel();
 	JPanel downPanel = new JPanel();
@@ -24,6 +28,8 @@ public class AddItemInfo extends JFrame implements ActionListener {
 	JLabel jLabel2 = new JLabel();
 	JLabel jLabel3 = new JLabel();
 	JLabel jLabel4 = new JLabel();
+
+	JComboBox<String> itemShopId = new JComboBox<>();
 
 	JButton addInfo = new JButton();
 	JButton clearInfo = new JButton();
@@ -84,6 +90,11 @@ public class AddItemInfo extends JFrame implements ActionListener {
 		girdBag.setConstraints(itemPrice, girdBagCon);
 		centerPanel.add(itemPrice);
 
+		List<String> ct = getShopItemId();
+
+		for (String item : ct) {
+			itemShopId.addItem(item);
+		}
 
 		jLabel4.setText("ItemShopId£º");
 		jLabel4.setFont(new Font("Dialog",0,12));
@@ -100,7 +111,6 @@ public class AddItemInfo extends JFrame implements ActionListener {
 		girdBag.setConstraints(itemShopId,girdBagCon);
 		centerPanel.add(itemShopId);
 
-
 		contentPane.add(centerPanel,BorderLayout.CENTER);
 
 	}
@@ -109,9 +119,26 @@ public class AddItemInfo extends JFrame implements ActionListener {
 		itemId.setText(null);
 		itemName.setText(null);
 		itemPrice.setText(null);
-		itemShopId.setText(null);
+//		itemShopId.setText(null);
 	}
 
+//	public List getShopItemId(){
+//		ItemModel model = new ItemModel();
+//		String sql = "select itemShopId from Item where 1=?";
+//		String[] params = new String[]{"1"};
+//		ArrayList idList = model.getItemShopId(sql, params);
+//
+//		return idList;
+//	}
+
+	public List getShopItemId(){
+		ItemModel model = new ItemModel();
+		String sql = "select shopId from Shop where 1=?";
+		String[] params = new String[]{"1"};
+		ArrayList idList = model.getItemShopId(sql, params);
+
+		return idList;
+	}
 	public AddItemInfo(){
 		this.setTitle("Add Item");
 		this.setResizable(false);
@@ -119,7 +146,7 @@ public class AddItemInfo extends JFrame implements ActionListener {
 		itemId.setEditable(true);
 		itemName.setEditable(true);
 		itemPrice.setEditable(true);
-		itemShopId.setEditable(true);
+//		itemShopId.setEditable(true);
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation((screenSize.width - 400) / 2, (screenSize.height - 300) / 2 + 45);
@@ -170,7 +197,7 @@ public class AddItemInfo extends JFrame implements ActionListener {
 			itemId.setEnabled(false);
 			itemName.setEnabled(false);
 			itemPrice.setEnabled(false);
-			itemShopId.setEnabled(false);
+//			itemShopId.setEnabled(false);
 
 			addInfo.setEnabled(false);
 			clearInfo.setEnabled(false);
@@ -178,15 +205,10 @@ public class AddItemInfo extends JFrame implements ActionListener {
 
 			ItemBean addItem = new ItemBean();
 			addItem.itemAdd(itemId.getText(), itemName.getText(), itemPrice.getText(),
-					itemShopId.getText());
-			
+					itemShopId.getSelectedItem().toString());
+
 			this.dispose();
-			
-			AddItemInfo asi = new AddItemInfo();
-			asi.downInit();
-			asi.pack();
-			asi.setVisible(true);
-	
+
 		}
 		else if (obj == clearInfo) { // Clear
 			setNull();

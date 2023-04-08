@@ -182,10 +182,10 @@ public class AddShopInfo extends JFrame implements ActionListener {
 			
 			this.dispose();
 			
-			AddShopInfo asi = new AddShopInfo();
-			asi.downInit();
-			asi.pack();
-			asi.setVisible(true);
+//			AddShopInfo asi = new AddShopInfo();
+//			asi.downInit();
+//			asi.pack();
+//			asi.setVisible(true);
 	
 		}
 		else if (obj == clearInfo) { // Clear
