@@ -19,7 +19,7 @@ public class ShoppingSystemLogin {
     static JButton loginButton = new JButton("Login");
     static JButton loginRegistrationButton = new JButton("Register");
 
-    // 创建注册界面
+
     static JFrame registrationFrame = new JFrame("Registration");
     static JTextField registrationUsernameField = new JTextField(20);
     static JPasswordField registrationPasswordField = new JPasswordField(20);
@@ -42,7 +42,6 @@ public class ShoppingSystemLogin {
         loginFrame.setSize(300, 150);
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setVisible(true);
-
 
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -74,7 +73,6 @@ public class ShoppingSystemLogin {
                 register();
             }
         });
-
 
     }
 
@@ -110,8 +108,9 @@ public class ShoppingSystemLogin {
                 if (register(username, password, customerId, phoneNumber, address)) {
                     JOptionPane.showMessageDialog(registrationFrame, "Registration successful.");
                     registrationFrame.setVisible(false);
-                    login();
-                } else {                JOptionPane.showMessageDialog(registrationFrame, "Registration failed.");
+                    loginFrame.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(registrationFrame, "Registration failed.");
                 }
             }
         });
@@ -140,7 +139,6 @@ public class ShoppingSystemLogin {
             while (rs.next()) {
                 customerId = rs.getInt(1);
             }
-
 
         } catch (SQLException se) {
             se.printStackTrace();

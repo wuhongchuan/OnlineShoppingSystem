@@ -13,7 +13,10 @@ import java.util.List;
 
 public class PurchaseItem extends JFrame implements ActionListener {
 
+	PurchaseBean getPid = new PurchaseBean();
+
 	static Integer cid = 0;
+	JTextField purchaseId = new JTextField(5);
 	JTextField customerId = new JTextField(5);
 
 	JComboBox<Integer> shopId = new JComboBox<>();
@@ -21,6 +24,7 @@ public class PurchaseItem extends JFrame implements ActionListener {
 
 	JPanel centerPanel = new JPanel(new GridBagLayout());
 
+	JLabel jLabel0 = new JLabel();
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
 	JLabel jLabel3 = new JLabel();
@@ -30,19 +34,37 @@ public class PurchaseItem extends JFrame implements ActionListener {
 	JButton exitInfo = new JButton();
 
 
-	public void Init() throws Exception{
+	public void Init() {
 
 		GridBagConstraints girdBagCon = new GridBagConstraints();
+
+		jLabel0.setText("PurchaseId£º");
+		jLabel0.setFont(new Font("Dialog",0,12));
+
+		girdBagCon.gridx = 0;
+		girdBagCon.gridy = 0;
+		girdBagCon.insets = new Insets(10,10,10,1);
+		centerPanel.add(jLabel0, girdBagCon);
+
+		girdBagCon.gridx = 1;
+		girdBagCon.gridy = 0;
+		girdBagCon.insets = new Insets(10,1,10,15);
+		purchaseId.setEditable(false);
+		purchaseId.setText(""+getPid.getPurchaseId());
+		centerPanel.add(purchaseId);
+
+
+
 		jLabel1.setText("CustomerId£º");
 		jLabel1.setFont(new Font("Dialog",0,12));
 
-		girdBagCon.gridx = 0;
+		girdBagCon.gridx = 2;
 		girdBagCon.gridy = 0;
 		girdBagCon.insets = new Insets(10,10,10,1);
 		centerPanel.add(jLabel1, girdBagCon);
 
 
-		girdBagCon.gridx = 1;
+		girdBagCon.gridx = 3;
 		girdBagCon.gridy = 0;
 		girdBagCon.insets = new Insets(10,1,10,15);
 		customerId.setText(cid.toString());
@@ -56,25 +78,25 @@ public class PurchaseItem extends JFrame implements ActionListener {
 
 		jLabel2.setText("ShopId£º");
 		jLabel2.setFont(new Font("Dialog",0,12));
-		girdBagCon.gridx = 2;
-		girdBagCon.gridy = 0;
+		girdBagCon.gridx = 0;
+		girdBagCon.gridy = 1;
 		girdBagCon.insets = new Insets(10,15,10,1);
 		centerPanel.add(jLabel2, girdBagCon);
 
-		girdBagCon.gridx = 3;
-		girdBagCon.gridy = 0;
+		girdBagCon.gridx = 1;
+		girdBagCon.gridy = 1;
 		girdBagCon.insets = new Insets(10,1,10,10);
 		centerPanel.add(shopId, girdBagCon);
 
 
 		jLabel3.setText("ItemId£º");
 		jLabel3.setFont(new Font("Dialog",0,12));
-		girdBagCon.gridx = 0;
+		girdBagCon.gridx = 2;
 		girdBagCon.gridy = 1;
 		girdBagCon.insets = new Insets(10,10,10,1);
 		centerPanel.add(jLabel3, girdBagCon);
 
-		girdBagCon.gridx = 1;
+		girdBagCon.gridx = 3;
 		girdBagCon.gridy = 1;
 		girdBagCon.insets = new Insets(10,1,10,15);
 		centerPanel.add(itemId, girdBagCon);
@@ -82,14 +104,14 @@ public class PurchaseItem extends JFrame implements ActionListener {
 		purchaseInfo.setText("Purchase");
 		purchaseInfo.setFont(new Font("Dialog",0,12));
 		girdBagCon.gridx = 0;
-		girdBagCon.gridy = 3;
+		girdBagCon.gridy = 2;
 		girdBagCon.insets = new Insets(10, 10, 10, 1);
 		centerPanel.add(purchaseInfo, girdBagCon);
 
 		exitInfo.setText("Exit");
 		exitInfo.setFont(new Font("Dialog",0,12));
 		girdBagCon.gridx = 1;
-		girdBagCon.gridy = 3;
+		girdBagCon.gridy = 2;
 		girdBagCon.insets = new Insets(10, 1, 10, 15);
 		centerPanel.add(exitInfo, girdBagCon);
 
@@ -179,7 +201,7 @@ public class PurchaseItem extends JFrame implements ActionListener {
 			exitInfo.setEnabled(false);
 
 			PurchaseBean pItem = new PurchaseBean();
-			pItem.purchaseItem(Integer.parseInt(customerId.getText()), Integer.parseInt(shopId.getSelectedItem().toString()),
+			pItem.purchaseItem(Integer.parseInt(purchaseId.getText()), Integer.parseInt(customerId.getText()), Integer.parseInt(shopId.getSelectedItem().toString()),
 					Integer.parseInt(itemId.getSelectedItem().toString()));
 
 			this.dispose();

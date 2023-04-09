@@ -29,7 +29,7 @@ public class AddItemInfo extends JFrame implements ActionListener {
 	JLabel jLabel3 = new JLabel();
 	JLabel jLabel4 = new JLabel();
 
-	JComboBox<String> itemShopId = new JComboBox<>();
+	JComboBox<Integer> itemShopId = new JComboBox<>();
 
 	JButton addInfo = new JButton();
 	JButton clearInfo = new JButton();
@@ -38,7 +38,7 @@ public class AddItemInfo extends JFrame implements ActionListener {
 	GridBagLayout girdBag = new GridBagLayout();
 	GridBagConstraints girdBagCon;
 
-	public void Init() throws Exception{
+	public void Init() {
 		contentPane =  this.getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
@@ -90,9 +90,9 @@ public class AddItemInfo extends JFrame implements ActionListener {
 		girdBag.setConstraints(itemPrice, girdBagCon);
 		centerPanel.add(itemPrice);
 
-		List<String> ct = getShopItemId();
+		List<Integer> ct = getShopItemId();
 
-		for (String item : ct) {
+		for (Integer item : ct) {
 			itemShopId.addItem(item);
 		}
 

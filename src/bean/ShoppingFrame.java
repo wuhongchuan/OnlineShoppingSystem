@@ -123,7 +123,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		jb6 = new JButton("Show Orders",new ImageIcon("src/pic/6.png"));
 		jb7 = new JButton("Order Canceling",new ImageIcon("src/pic/7.png"));
 		jb8 = new JButton("Delete Order",new ImageIcon("src/pic/8.png"));
-//		jb9 = new JButton("成绩修改",new ImageIcon("src/pic/9.png"));
+
 		jb10 = new JButton("Exit",new ImageIcon("src/pic/10.png"));
 	
 		jb1.addActionListener(this);
@@ -161,12 +161,7 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 		);	
 	}
 
-//	public JTable getTable() {
-//		return jtInfo;
-//	}
 
-	
-	//事件处理
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object obj = e.getSource();
@@ -259,12 +254,6 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 			PurchaseBean pItem = new PurchaseBean();
 			pItem.DeleteAllItem(ccid);
 		}
-//		else if (obj == jb9) { //成绩修改
-//			EditGradeInfo egi = new EditGradeInfo();
-//			egi.downInit();
-//			egi.pack();
-//			egi.setVisible(true);
-//		}
 
 	}
 

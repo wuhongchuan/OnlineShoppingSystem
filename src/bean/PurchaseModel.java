@@ -13,14 +13,10 @@ public class PurchaseModel extends AbstractTableModel{
 
 	private Vector rowDatas,columnNames;
 	public PurchaseModel(){}
-	
-//	public boolean updateShop(String sql,String[] params){
-//		db = new Database2();
-//		return db.isUpdate(sql,params);
-//	}
 
 	public void queryPurchase(String sql,String[] params){
 		columnNames = new Vector();
+		columnNames.add("Purchase_Id");
 		columnNames.add("Customer_Id");
 		columnNames.add("Shop_Id");
 		columnNames.add("Item_Id");
@@ -34,6 +30,7 @@ public class PurchaseModel extends AbstractTableModel{
 				row.add(rs.getString(1));
 				row.add(rs.getString(2));
 				row.add(rs.getString(3));
+				row.add(rs.getString(4));
 				rowDatas.add(row);
 			}
 		}catch(SQLException e){
