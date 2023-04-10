@@ -95,7 +95,7 @@ public class PurchaseBean {
 		try {
 			DB.OpenConn();
 			DB.executeUpdate(sql);
-			JOptionPane.showMessageDialog(null, "A new record is successfully deleted£¡");
+			JOptionPane.showMessageDialog(null, "All orders successfully deleted£¡");
 		} catch (Exception e) {
 			System.out.println(e);
 			JOptionPane.showMessageDialog(null, "delete fail", "error", JOptionPane.ERROR_MESSAGE);

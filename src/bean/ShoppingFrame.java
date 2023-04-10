@@ -184,10 +184,9 @@ public class ShoppingFrame extends JFrame implements ActionListener{
 					model.queryItem(sql, params);
 					jtInfo.setModel(model);
 				}else if((String)jcb1.getSelectedItem()=="ItemName"){
-					String sql = "select * from Item where itemName=?";
-					String[] params = new String[]{jtfValue};
+					String sql = "select * from Item where itemName LIKE '" + jtfValue + "%'" ;
 					ItemModel model = new ItemModel();
-					model.queryItem(sql, params);
+					model.queryItem(sql);
 					jtInfo.setModel(model);
 				}else if((String)jcb1.getSelectedItem()=="ItemPrice"){
 					String sql = "select * from Item where itemPrice=?";

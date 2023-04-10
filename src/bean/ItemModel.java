@@ -40,6 +40,32 @@ public class ItemModel extends AbstractTableModel{
 		}
 	}
 
+	public void queryItem(String sql){
+		columnNames = new Vector();
+		columnNames.add("Item_Id");
+		columnNames.add("Item_Name");
+		columnNames.add("item_Price");
+		columnNames.add("item_Shop_Id");
+
+		rowDatas = new Vector();
+		try{
+			db = new Database2();
+			rs = db.queryResult(sql);
+			while(rs.next()){
+				Vector row = new Vector();
+				row.add(rs.getString(1));
+				row.add(rs.getString(2));
+				row.add(rs.getString(3));
+				row.add(rs.getString(4));
+				rowDatas.add(row);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			db.close();
+		}
+	}
+
 	public ArrayList getItemShopId(String sql, String[] params){
 
 		ArrayList<Integer> idList = new ArrayList<Integer>();
